@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useSearchParams } from "next/navigation"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { 
   CheckCircle2, 
   AlertCircle, 
@@ -83,7 +83,7 @@ export default function EligibilityDashboard() {
           </div>
           <h2 className="text-2xl font-bold text-slate-800 mb-2">No Business Data Found</h2>
           <p className="text-slate-500 mb-8 max-w-md">
-            We couldn't find a business profile linked to your session. Please complete the application form to link your TIN.
+            We couldn&apos;t find a business profile linked to your session. Please complete the application form to link your TIN.
           </p>
           <Button onClick={() => window.location.href='/application-form'} className="bg-brand-blue hover:bg-brand-darkblue h-12 px-8 rounded-xl shadow-lg group">
             Go to Application Form

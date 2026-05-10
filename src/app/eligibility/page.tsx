@@ -188,7 +188,7 @@ export default function EligibilityPage() {
               </div>
               <h2 className="text-xl font-bold text-slate-800 mb-2">Business Not Found</h2>
               <p className="text-slate-500 max-w-sm">
-                No business with ID <span className="font-mono font-semibold text-slate-700">"{query}"</span> exists
+                No business with ID <span className="font-mono font-semibold text-slate-700">&quot;{query}&quot;</span> exists
                 in the RDB registry. Please verify the TIN and try again.
               </p>
             </motion.div>

@@ -96,14 +96,13 @@ export default function NarrativeForm() {
 
   // Auto-redirect after submission
   useEffect(() => {
-    if (isSubmitted) {
-      if (countdown > 0) {
-        const timer = setTimeout(() => setCountdown(countdown - 1), 1000)
-        return () => clearTimeout(timer)
-      } else {
-        window.location.href = `/tracker?tin=${formData.businessTin}`
-      }
+    if (isSubmitted && countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000)
+      return () => clearTimeout(timer)
+    } else if (isSubmitted && countdown <= 0) {
+      window.location.href = `/tracker?tin=${formData.businessTin}`
     }
+    return
   }, [isSubmitted, countdown, formData.businessTin])
 
   if (isSubmitted) {
@@ -255,7 +254,7 @@ export default function NarrativeForm() {
                   )}
 
                   <div className="space-y-2">
-                    <Label htmlFor="businessName">Business Name / Izina ry'ubucuruzi</Label>
+                    <Label htmlFor="businessName">Business Name / Izina ry&apos;ubucuruzi</Label>
                     <Input 
                       id="businessName" 
                       placeholder="e.g. Kigali Fresh Produce" 
