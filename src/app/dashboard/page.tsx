@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { 
@@ -28,7 +28,7 @@ import {
   BusinessLookup
 } from "@/lib/loanEligibility"
 
-export default function EligibilityDashboard() {
+function EligibilityDashboardContent() {
   const searchParams = useSearchParams()
   const tin = searchParams.get("tin")
   
@@ -309,5 +309,18 @@ export default function EligibilityDashboard() {
 
       </motion.div>
     </div>
+  )
+}
+
+export default function EligibilityDashboard() {
+  return (
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="w-12 h-12 rounded-full border-4 border-slate-200 border-t-brand-blue animate-spin mb-4" />
+        <p className="text-slate-500 font-medium">Loading dashboard...</p>
+      </div>
+    }>
+      <EligibilityDashboardContent />
+    </Suspense>
   )
 }

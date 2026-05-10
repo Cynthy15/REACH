@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle2, FileText, ChevronRight, ChevronLeft, AlertTriangle, XCircle } from "lucide-react"
 
@@ -18,7 +18,7 @@ import {
   EligibilityResult
 } from "@/lib/loanEligibility"
 
-export default function NarrativeForm() {
+function NarrativeFormContent() {
   const searchParams = useSearchParams()
   const urlTin = searchParams.get("tin")
   const urlAmount = searchParams.get("amount")
@@ -447,5 +447,18 @@ export default function NarrativeForm() {
       )}
       
     </div>
+  )
+}
+
+export default function NarrativeForm() {
+  return (
+    <Suspense fallback={
+      <div className="flex-1 flex flex-col items-center justify-center min-h-[60vh]">
+        <div className="w-12 h-12 rounded-full border-4 border-slate-200 border-t-brand-blue animate-spin mb-4" />
+        <p className="text-slate-500 font-medium">Loading form...</p>
+      </div>
+    }>
+      <NarrativeFormContent />
+    </Suspense>
   )
 }
