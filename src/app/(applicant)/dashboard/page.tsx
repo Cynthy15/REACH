@@ -77,7 +77,7 @@ function EligibilityDashboardContent() {
   if (!tin || !data || !eligibility) {
     return (
       <div className="flex-1 w-full p-4 md:p-8 lg:p-12 mb-20 max-w-4xl mx-auto">
-        <Card className="border-dashed border-2 border-slate-200 bg-slate-50/50 p-12 flex flex-col items-center text-center">
+        <Card className="border-dashed border-2 border-slate-200 bg-background/50 p-12 flex flex-col items-center text-center">
           <div className="w-20 h-20 bg-slate-100 rounded-full flex items-center justify-center mb-6">
             <Search className="w-10 h-10 text-slate-400" />
           </div>
@@ -118,7 +118,7 @@ function EligibilityDashboardContent() {
               {data.rdb.Business_Field}
             </p>
           </div>
-          <Button className="bg-white text-brand-blue hover:bg-slate-50 font-semibold h-12 px-6 rounded-xl shadow-lg border-0 group">
+          <Button className="bg-white text-brand-blue hover:bg-background font-semibold h-12 px-6 rounded-xl shadow-lg border-0 group">
             Download Form Report
             <Download className="w-4 h-4 ml-2 group-hover:-translate-y-1 transition-transform" />
           </Button>
@@ -186,11 +186,11 @@ function EligibilityDashboardContent() {
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  <div className="bg-background p-4 rounded-xl border border-slate-100">
                     <p className="text-xs text-slate-500 font-medium mb-1 uppercase tracking-wider">Monthly Revenue</p>
                     <p className="text-lg font-bold text-slate-800">{formatRWF(data.rra.Monthly_Income)}</p>
                   </div>
-                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                  <div className="bg-background p-4 rounded-xl border border-slate-100">
                     <p className="text-xs text-slate-500 font-medium mb-1 uppercase tracking-wider">Tax Status</p>
                     <p className={`text-lg font-bold ${data.rra.Tax_Compliance_Status === "Compliant" ? "text-brand-success" : "text-brand-error"}`}>
                       {data.rra.Tax_Compliance_Status}
@@ -283,21 +283,21 @@ function EligibilityDashboardContent() {
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 {data.crb && data.crb.Has_Loan ? (
-                  <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-100">
+                  <div className="flex items-center justify-between p-3 bg-background rounded-lg border border-slate-100">
                     <div>
                       <p className="text-sm font-semibold text-slate-900">Reference: {data.crb.Loan_Status}</p>
                       <p className="text-xs text-slate-500">{formatRWF(data.crb.Loan_Amount)}</p>
                     </div>
                     <Badge className={`${
                       data.crb.Loan_Status === "Paid" ? "bg-green-100 text-green-800" :
-                      data.crb.Loan_Status === "Ongoing" ? "bg-blue-100 text-blue-800" :
+                      data.crb.Loan_Status === "Ongoing" ? "bg-emerald-100 text-emerald-800" :
                       "bg-red-100 text-red-800"
                     } px-2 py-1 text-xs font-medium border-0`}>
                       {data.crb.Loan_Status}
                     </Badge>
                   </div>
                 ) : (
-                  <div className="p-4 text-center rounded-xl bg-slate-50 border border-slate-100">
+                  <div className="p-4 text-center rounded-xl bg-background border border-slate-100">
                     <Building2 className="w-8 h-8 text-slate-300 mx-auto mb-2" />
                     <p className="text-xs text-slate-500">No active or past loans recorded in CRB for this business.</p>
                   </div>

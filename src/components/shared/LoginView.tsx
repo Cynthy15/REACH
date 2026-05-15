@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import { LogIn, ShieldCheck, Zap, BarChart3, Lock } from 'lucide-react';
 
 export const LoginView: React.FC = () => {
@@ -35,7 +35,7 @@ export const LoginView: React.FC = () => {
              <p className="text-sm text-zinc-400">Average approval in under 24 hours.</p>
           </div>
           <div className="space-y-2">
-             <div className="flex items-center gap-2 text-blue-400">
+             <div className="flex items-center gap-2 text-emerald-400">
                <ShieldCheck size={20} /> <span className="font-bold text-sm uppercase tracking-widest">Secure</span>
              </div>
              <p className="text-sm text-zinc-400">Enterprise-grade encryption and access controls.</p>
@@ -100,3 +100,4 @@ export const LoginView: React.FC = () => {
     </div>
   );
 };
+

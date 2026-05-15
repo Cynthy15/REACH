@@ -114,7 +114,7 @@ export const ReportsView: React.FC<{ theme: 'light' | 'dark' | 'system' }> = ({ 
                   <div className="flex items-center gap-4">
                     <div className={`p-3 rounded-2xl ${
                       report.type === 'PDF' ? 'bg-rose-50 text-rose-500' : 
-                      report.type === 'EXCEL' ? 'bg-emerald-50 text-emerald-600' : 'bg-blue-50 text-blue-500'
+                      report.type === 'EXCEL' ? 'bg-emerald-50 text-emerald-600' : 'bg-emerald-50 text-emerald-500'
                     }`}>
                       {report.type === 'PDF' ? <FileText size={24} /> : report.type === 'EXCEL' ? <FileSpreadsheet size={24} /> : <Table size={24} />}
                     </div>

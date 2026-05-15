@@ -1,18 +1,18 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTheme } from '@/hooks/useTheme';
 import { rdbData, rraData, crbData } from '@/lib/mockData';
-import { motion } from 'motion/react';
+import { motion } from 'framer-motion';
 import {
   CheckCircle2,
-  AlertCircle,
-  Clock,
   TrendingUp,
   DollarSign,
-  Users,
-  Building2
+  Building2,
+  Bell,
+  X,
+  ArrowRight
 } from 'lucide-react';
 import {
   BarChart,
@@ -26,10 +26,12 @@ import {
   Pie,
   Cell
 } from 'recharts';
+import { getUnreadNotificationCount, markAllNotificationsRead } from '@/lib/notificationStore';
 
 export default function LoanApproverDashboard() {
   const router = useRouter();
   const { isLoaded } = useTheme();
+  const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
     // Check authentication and access
@@ -47,6 +49,17 @@ export default function LoanApproverDashboard() {
       router.push('/approver/request-access');
       return;
     }
+
+    // Load notifications
+    const count = getUnreadNotificationCount();
+    setUnreadCount(count);
+
+    // Poll for new notifications
+    const interval = setInterval(() => {
+      setUnreadCount(getUnreadNotificationCount());
+    }, 3000);
+
+    return () => clearInterval(interval);
   }, [router]);
 
   if (!isLoaded) return null;
@@ -110,10 +123,56 @@ export default function LoanApproverDashboard() {
             <p className="text-gray-600 dark:text-gray-400 mt-1 transition-colors">Overview of businesses, loans, and compliance status</p>
           </div>
 
+          {/* Notification Banner */}
+          {unreadCount > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              className="relative"
+            >
+              <div className="rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 text-white p-4 flex items-center justify-between shadow-lg shadow-emerald-200 dark:shadow-none">
+                <div className="flex items-center gap-3">
+                  <div className="relative">
+                    <Bell size={22} className="animate-bounce" />
+                    <span className="absolute -top-1 -right-1 w-4 h-4 bg-white text-emerald-600 text-[10px] font-bold rounded-full flex items-center justify-center">
+                      {unreadCount}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-base">
+                      {unreadCount} {unreadCount === 1 ? 'new application' : 'new applications'}
+                    </p>
+                    <p className="text-sm opacity-90">
+                      {unreadCount === 1 ? 'An applicant has submitted a new loan application.' : `${unreadCount} applicants have submitted loan applications.`}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <button
+                    onClick={() => router.push('/approver/reviews')}
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-white text-emerald-600 rounded-xl font-semibold hover:bg-opacity-90 transition-all"
+                  >
+                    Review <ArrowRight size={16} />
+                  </button>
+                  <button
+                    onClick={() => {
+                      markAllNotificationsRead();
+                      setUnreadCount(0);
+                    }}
+                    className="p-2 hover:bg-white/20 rounded-lg transition-colors"
+                  >
+                    <X size={20} />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Building2, label: 'Total Businesses', value: totalBusinesses, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20' },
+              { icon: Building2, label: 'Total Businesses', value: totalBusinesses, color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
               { icon: CheckCircle2, label: 'Compliant', value: compliantBusinesses, color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-900/20' },
               { icon: DollarSign, label: 'With Loans', value: businessesWithLoans, color: 'text-amber-600 dark:text-amber-400', bg: 'bg-amber-50 dark:bg-amber-900/20' },
               { icon: TrendingUp, label: 'Avg Credit Score', value: averageCreditScore, color: 'text-purple-600 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-900/20' },

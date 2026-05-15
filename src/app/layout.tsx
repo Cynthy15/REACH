@@ -17,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen flex flex-col bg-slate-50 antialiased`}>
+      <body className={`${inter.className} min-h-screen flex flex-col bg-background antialiased`}>
         <AuthProvider>
           {children}
         </AuthProvider>

@@ -172,15 +172,15 @@ export default function VerifyTinPage() {
 
               <div className="mt-8 pt-8 border-t border-slate-100 grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">RDB</div>
+                  <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">RDB</div>
                   <p className="text-[10px] text-slate-500 uppercase font-medium">Registry</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">RRA</div>
+                  <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">RRA</div>
                   <p className="text-[10px] text-slate-500 uppercase font-medium">Taxation</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">CRB</div>
+                  <div className="w-10 h-10 bg-background rounded-full flex items-center justify-center mx-auto mb-2 text-slate-400 font-bold text-xs">CRB</div>
                   <p className="text-[10px] text-slate-500 uppercase font-medium">Credit</p>
                 </div>
               </div>

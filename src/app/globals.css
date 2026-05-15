@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 138 65% 95%;
-    --foreground: 163 39% 13%;
+    --background: 138 55% 96%;
+    --foreground: 145 30% 16%;
     --card: 0 0% 100%;
     --card-foreground: 163 39% 13%;
     --popover: 0 0% 100%;
     --popover-foreground: 163 39% 13%;
-    --primary: 138 55% 35%;
+    --primary: 138 62% 34%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 138 30% 93%;
+    --secondary: 138 40% 88%;
     --secondary-foreground: 163 39% 13%;
-    --muted: 138 30% 93%;
+    --muted: 138 40% 88%;
     --muted-foreground: 163 15% 30%;
-    --accent: 138 30% 93%;
+    --accent: 138 40% 88%;
     --accent-foreground: 163 39% 13%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 138 35% 85%;
-    --input: 138 35% 85%;
-    --ring: 138 70% 40%;
+    --border: 138 40% 78%;
+    --input: 138 40% 90%;
+    --ring: 138 64% 35%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
+    --background: 145 18% 14%;
+    --foreground: 145 64% 96%;
+    --card: 145 18% 14%;
+    --card-foreground: 145 64% 96%;
+    --popover: 145 18% 14%;
+    --popover-foreground: 145 64% 96%;
+    --primary: 138 62% 34%;
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 138 40% 88%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
+    --muted: 145 18% 14%;
+    --muted-foreground: 145 64% 96%;
+    --accent: 138 40% 88%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 48%;
+    --border: 145 18% 26%;
+    --input: 145 18% 26%;
+    --ring: 138 64% 35%;
   }
 }
 
@@ -54,7 +54,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-screen;
   }
 }
 
@@ -62,3 +62,8 @@ html {
   scroll-behavior: smooth;
 }
 
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
