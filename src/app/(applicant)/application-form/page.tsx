@@ -17,6 +17,7 @@ import {
   formatRWF,
   EligibilityResult
 } from "@/lib/loanEligibility"
+import { addSubmittedApplication } from "@/lib/notificationStore"
 
 function NarrativeFormContent() {
   const searchParams = useSearchParams()
@@ -75,6 +76,20 @@ function NarrativeFormContent() {
   const submitApplication = () => {
     setIsSubmitting(true)
     setTimeout(() => {
+      // Persist the application into the notification store
+      // so the approver gets a notification and sees it in reviews
+      const userEmail = localStorage.getItem('reach_user_email') || 'applicant@business.rw';
+      addSubmittedApplication({
+        fullName: formData.businessName ? `${formData.businessName} Owner` : 'Applicant',
+        email: userEmail,
+        businessName: formData.businessName || 'Unknown Business',
+        businessTin: formData.businessTin || '',
+        category: formData.businessType || 'General',
+        amountRange: formData.requestedAmount || 'Not specified',
+        loanPurpose: formData.loanPurpose || '',
+        repaymentPlan: formData.repaymentPlan || '',
+        marketDescription: formData.marketDescription || '',
+      });
       setIsSubmitting(false)
       setIsSubmitted(true)
     }, 1400)
@@ -138,7 +153,7 @@ function NarrativeFormContent() {
               </p>
             </div>
 
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 text-left">
+            <div className="bg-background rounded-2xl p-6 border border-slate-100 text-left">
               <div className="flex justify-between items-center mb-4">
                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Reference ID</span>
                 <span className="text-xs font-mono font-bold text-brand-blue">REACH-{Math.random().toString(36).substr(2, 9).toUpperCase()}</span>
@@ -162,7 +177,7 @@ function NarrativeFormContent() {
             <div className="pt-4 space-y-4">
               <Button 
                 onClick={() => window.location.href = `/tracker?tin=${formData.businessTin}`}
-                className="w-full h-14 bg-brand-blue hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-brand-blue/20 flex items-center justify-center gap-2"
+                className="w-full h-14 bg-brand-blue hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg shadow-brand-blue/20 flex items-center justify-center gap-2"
               >
                 Go to Application Tracker
                 <ChevronRight className="w-5 h-5" />
@@ -186,7 +201,7 @@ function NarrativeFormContent() {
       </div>
 
       <Card className="border-slate-200 shadow-xl overflow-hidden rounded-2xl relative">
-        <div className="bg-slate-50 border-b border-slate-100 p-4 md:p-6 pb-0 flex flex-col gap-4">
+        <div className="bg-background border-b border-slate-100 p-4 md:p-6 pb-0 flex flex-col gap-4">
           <div className="flex justify-between items-center text-sm font-medium">
             <span className="text-slate-500">Step {currentStep} of {totalSteps}</span>
           </div>
@@ -271,7 +286,7 @@ function NarrativeFormContent() {
                           key={type} 
                           type="button"
                           variant={formData.businessType === type ? 'default' : 'outline'}
-                          className={`h-12 border-slate-200 ${formData.businessType === type ? 'bg-brand-blue text-white hover:bg-brand-darkblue' : 'hover:bg-slate-50 text-slate-600'}`}
+                          className={`h-12 border-slate-200 ${formData.businessType === type ? 'bg-brand-blue text-white hover:bg-brand-darkblue' : 'hover:bg-background text-slate-600'}`}
                           onClick={() => setFormData({...formData, businessType: type})}
                         >
                           {type}
@@ -384,7 +399,7 @@ function NarrativeFormContent() {
                   </div>
                 </div>
 
-                <div className="space-y-4 text-sm bg-slate-50 p-6 rounded-xl border border-slate-100">
+                <div className="space-y-4 text-sm bg-background p-6 rounded-xl border border-slate-100">
                   <div>
                     <span className="font-semibold text-slate-700 block mb-1">Business Name:</span>
                     <span className="text-slate-600">{formData.businessName || "Not provided"} ({formData.businessType || "Not provided"})</span>

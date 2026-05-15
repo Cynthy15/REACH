@@ -3,10 +3,10 @@
 import React, { useState } from 'react';
 import { Layout } from './components/shared/layout';
 import { ApproverDashboard } from './components/approver/ApproverDashboard';
-import { ReviewsView } from './components/reviews/ReviewsView';
-import { ReportsView } from './components/reports/ReportsView';
+import { ReviewsView } from './components/approver/ReviewsView';
+import { ReportsView } from './components/approver/ReportsView';
 import { SettingsView } from './components/settings/SettingsView';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const AppContent: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -35,3 +35,4 @@ const AppContent: React.FC = () => {
 export default function App() {
   return <AppContent />;
 }
+

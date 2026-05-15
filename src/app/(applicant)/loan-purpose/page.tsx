@@ -84,7 +84,7 @@ export default function LoanPurpose() {
         <div className="lg:col-span-2 space-y-8">
           
           <Card className="border-slate-200 shadow-sm rounded-2xl overflow-hidden">
-            <div className="bg-slate-50 border-b border-slate-100 p-6">
+            <div className="bg-background border-b border-slate-100 p-6">
               <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-blue text-xs text-white">1</span>
                 Loan Amount
@@ -142,7 +142,7 @@ export default function LoanPurpose() {
           </Card>
 
           <Card className="border-slate-200 shadow-sm rounded-2xl overflow-hidden">
-            <div className="bg-slate-50 border-b border-slate-100 p-6">
+            <div className="bg-background border-b border-slate-100 p-6">
               <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-300 text-xs text-white">2</span>
                 Primary Purpose
@@ -157,7 +157,7 @@ export default function LoanPurpose() {
                     className={`flex flex-col items-center justify-center text-center p-6 border-2 rounded-xl cursor-pointer transition-all ${
                       category === cat.id 
                         ? 'border-brand-blue bg-brand-lightblue/30 shadow-md shadow-brand-blue/10' 
-                        : 'border-slate-100 hover:border-slate-300 hover:bg-slate-50'
+                        : 'border-slate-100 hover:border-slate-300 hover:bg-background'
                     }`}
                   >
                     <RadioGroupItem value={cat.id} id={cat.id} className="sr-only" />
@@ -171,7 +171,7 @@ export default function LoanPurpose() {
           </Card>
 
           <Card className="border-slate-200 shadow-sm rounded-2xl overflow-hidden">
-            <div className="bg-slate-50 border-b border-slate-100 p-6">
+            <div className="bg-background border-b border-slate-100 p-6">
               <h2 className="text-lg font-semibold text-slate-800 flex items-center gap-2">
                 <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200 text-xs text-slate-500">3</span>
                 Repayment Timeline
@@ -190,7 +190,7 @@ export default function LoanPurpose() {
                     className={`flex items-center justify-center py-4 border-2 rounded-xl cursor-pointer transition-all font-semibold ${
                       duration === term.val 
                         ? 'border-brand-blue bg-white text-brand-blue shadow-sm' 
-                        : 'border-slate-100 text-slate-500 hover:border-slate-300 hover:bg-slate-50'
+                        : 'border-slate-100 text-slate-500 hover:border-slate-300 hover:bg-background'
                     }`}
                   >
                     <RadioGroupItem value={term.val} id={`term-${term.val}`} className="sr-only" />

@@ -30,7 +30,7 @@ function StatusBadge({ status }: { status: string }) {
     Partial: "bg-amber-100 text-amber-800 border-amber-200",
     Paid: "bg-emerald-100 text-emerald-800 border-emerald-200",
     Defaulted: "bg-red-100 text-red-800 border-red-200",
-    Ongoing: "bg-blue-100 text-blue-800 border-blue-200",
+    Ongoing: "bg-emerald-100 text-emerald-800 border-emerald-200",
     "No record": "bg-slate-100 text-slate-600 border-slate-200",
     Good: "bg-emerald-100 text-emerald-800 border-emerald-200",
     Average: "bg-amber-100 text-amber-800 border-amber-200",
@@ -163,7 +163,7 @@ export default function EligibilityPage() {
               <button
                 key={s.id}
                 onClick={() => handleSearch(s.id)}
-                className="text-xs rounded-full border border-slate-200 bg-slate-50 hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 px-3 py-1 transition-colors font-mono"
+                className="text-xs rounded-full border border-slate-200 bg-background hover:bg-emerald-50 hover:border-emerald-300 hover:text-emerald-700 px-3 py-1 transition-colors font-mono"
               >
                 {s.id} <span className="font-sans text-slate-400">· {s.label}</span>
               </button>
@@ -315,8 +315,8 @@ export default function EligibilityPage() {
                   <Card className="h-full border-slate-200 shadow-sm">
                     <CardHeader className="pb-3">
                       <CardTitle className="flex items-center gap-2 text-base">
-                        <div className="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center">
-                          <TrendingUp className="w-4 h-4 text-blue-700" />
+                        <div className="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center">
+                          <TrendingUp className="w-4 h-4 text-emerald-700" />
                         </div>
                         <div>
                           <span className="text-slate-900">RRA</span>
@@ -325,7 +325,7 @@ export default function EligibilityPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-1">
-                      <div className="rounded-xl bg-blue-50 px-4 py-3 mb-4">
+                      <div className="rounded-xl bg-emerald-50 px-4 py-3 mb-4">
                         <p className="text-xs text-slate-500 mb-0.5">Annual Income</p>
                         <p className="font-bold text-slate-800">{formatRWF(lookup.rra.Annual_Income)}</p>
                       </div>
@@ -356,7 +356,7 @@ export default function EligibilityPage() {
                     </CardHeader>
                     <CardContent>
                       {lookup.crb === null ? (
-                        <div className="rounded-xl bg-slate-50 border border-dashed border-slate-300 px-4 py-6 text-center">
+                        <div className="rounded-xl bg-background border border-dashed border-slate-300 px-4 py-6 text-center">
                           <Clock className="w-6 h-6 text-slate-400 mx-auto mb-2" />
                           <p className="text-sm font-semibold text-slate-600">No CRB Record</p>
                           <p className="text-xs text-slate-400 mt-1">
@@ -406,7 +406,7 @@ export default function EligibilityPage() {
                 {[
                   { label: "Annual Revenue", value: formatRWF(lookup.rra.Annual_Income), icon: <Banknote className="w-4 h-4" />, color: "text-emerald-700 bg-emerald-50" },
                   { label: "Credit Score", value: lookup.crb ? lookup.crb.Credit_Score : "N/A", icon: <BarChart3 className="w-4 h-4" />, color: "text-violet-700 bg-violet-50" },
-                  { label: "Loan Status", value: lookup.crb ? lookup.crb.Loan_Status : "No Record", icon: <CreditCard className="w-4 h-4" />, color: "text-blue-700 bg-blue-50" },
+                  { label: "Loan Status", value: lookup.crb ? lookup.crb.Loan_Status : "No Record", icon: <CreditCard className="w-4 h-4" />, color: "text-emerald-700 bg-emerald-50" },
                   { label: "Tax Status", value: lookup.rra.Tax_Compliance_Status, icon: <ShieldCheck className="w-4 h-4" />, color: lookup.rra.Tax_Compliance_Status === "Compliant" ? "text-emerald-700 bg-emerald-50" : "text-amber-700 bg-amber-50" },
                 ].map((stat) => (
                   <div key={stat.label} className="rounded-xl bg-white border border-slate-200 p-4 flex items-center gap-3">
@@ -443,7 +443,7 @@ export default function EligibilityPage() {
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl w-full">
                 {[
                   { icon: <Building2 className="w-5 h-5 text-emerald-600" />, title: "RDB Registry", desc: "Business identity, sector, and registration status.", color: "bg-emerald-50 border-emerald-100" },
-                  { icon: <TrendingUp className="w-5 h-5 text-blue-600" />, title: "RRA Tax Records", desc: "Annual income, tax category, and compliance status.", color: "bg-blue-50 border-blue-100" },
+                  { icon: <TrendingUp className="w-5 h-5 text-emerald-600" />, title: "RRA Tax Records", desc: "Annual income, tax category, and compliance status.", color: "bg-emerald-50 border-emerald-100" },
                   { icon: <CreditCard className="w-5 h-5 text-violet-600" />, title: "CRB Credit History", desc: "Loan history, credit score, and payment behaviour.", color: "bg-violet-50 border-violet-100" },
                 ].map((card) => (
                   <div key={card.title} className={`rounded-2xl border p-5 text-left ${card.color}`}>
