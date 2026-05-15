@@ -89,7 +89,6 @@ export const rdbData: RDBRecord[] = [
   { Business_ID: "RW-TIN-000038", Business_Name: "CloudNet Rwanda",              Business_Description: "Cloud hosting and managed IT services provider for enterprises.",                   Business_Field: "ICT", Owner_Name: "Josiane Uwimana" },
   { Business_ID: "RW-TIN-000039", Business_Name: "Ikaze Hospitality Ltd",        Business_Description: "Mid-range hotel chain with three properties in Kigali and Musanze.",               Business_Field: "Tourism", Owner_Name: "Elias Karekezi" },
   { Business_ID: "RW-TIN-000040", Business_Name: "Amahoro Grain Traders",        Business_Description: "Bulk commodity trader dealing in sorghum, rice, and wheat.",                       Business_Field: "Trade", Owner_Name: "Vestine Mukandayisenga" },
-  // New businesses – no CRB record
   { Business_ID: "RW-TIN-000041", Business_Name: "Turbo Delivery App",           Business_Description: "Tech startup building a last-mile delivery marketplace for Kigali restaurants.",   Business_Field: "ICT", Owner_Name: "Hassan Mugabo" },
   { Business_ID: "RW-TIN-000042", Business_Name: "Gira Fresh Juice Bar",         Business_Description: "Kiosk-based fresh fruit juice venture at Kigali Innovation City.",                 Business_Field: "Trade", Owner_Name: "Philomene Kayitesi" },
   { Business_ID: "RW-TIN-000043", Business_Name: "Sunrise Solar Rwanda",         Business_Description: "Solar panel installation startup targeting rural households.",                      Business_Field: "Manufacturing", Owner_Name: "Joseph Butera" },
@@ -144,7 +143,6 @@ export const rraData: RRARecord[] = [
   { Business_ID: "RW-TIN-000038", Annual_Income:204_000_000, Monthly_Income:17_000_000, Tax_Category: "Large",  Tax_Compliance_Status: "Compliant" },
   { Business_ID: "RW-TIN-000039", Annual_Income: 72_000_000, Monthly_Income: 6_000_000, Tax_Category: "Medium", Tax_Compliance_Status: "Partial" },
   { Business_ID: "RW-TIN-000040", Annual_Income: 39_600_000, Monthly_Income: 3_300_000, Tax_Category: "Medium", Tax_Compliance_Status: "Compliant" },
-  // New businesses
   { Business_ID: "RW-TIN-000041", Annual_Income:  4_800_000, Monthly_Income:   400_000, Tax_Category: "Small",  Tax_Compliance_Status: "Compliant" },
   { Business_ID: "RW-TIN-000042", Annual_Income:  2_400_000, Monthly_Income:   200_000, Tax_Category: "Small",  Tax_Compliance_Status: "Compliant" },
   { Business_ID: "RW-TIN-000043", Annual_Income:  6_000_000, Monthly_Income:   500_000, Tax_Category: "Small",  Tax_Compliance_Status: "Compliant" },
