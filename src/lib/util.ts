@@ -1,5 +1,3 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
 import { OperationType, FirestoreErrorInfo } from '../types/types';
 
 export function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
@@ -16,8 +14,4 @@ export function handleFirestoreError(error: unknown, operationType: OperationTyp
   };
   console.error('Error: ', JSON.stringify(errInfo));
   throw new Error(JSON.stringify(errInfo));
-}
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
 }
